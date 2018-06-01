@@ -2,6 +2,7 @@
 
 @section('content')
 
+
     <h1>タスクリスト 一覧</h1>
 
    @if (count($tasks) > 0)
