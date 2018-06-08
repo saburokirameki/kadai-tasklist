@@ -12,9 +12,10 @@
 */
 
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+ Route::get('/', 'TaskController@index');
 
 Route::resource('tasks', 'TaskController');
 
@@ -33,5 +34,5 @@ Route::group(['middleware' => 'auth'], function () {
    
     Route::resource('tasks', 'TaskController', ['only' => ['store', 'destroy']]);
 });
-// Route::get('top', 'TaskController@index');
+
 
