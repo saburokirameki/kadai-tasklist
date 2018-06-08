@@ -20,6 +20,7 @@ class TaskController extends Controller
         return view('tasks.index', [
             'tasks' => $tasks,
         ]);
+
     }
     /**
      * Show the form for creating a new resource.
@@ -47,10 +48,10 @@ class TaskController extends Controller
             'content' => 'required|max:191',
         ]);
 
-        $task = new Task;
-        $task->status = $request->status; 
-        $task->content = $request->content;
-        $task->save();
+       $request->user()->tasks()->create([
+            'content'=>$request->content,
+            'status'=>$request->status,
+            ]);
 
         return redirect('/');
     }
