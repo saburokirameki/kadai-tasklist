@@ -11,15 +11,17 @@ class TaskController extends Controller
   
     public function index()
     {
-        $tasks = Task::all();
-  /**
-     * Display a listing of the resource.
-     
-     * @return \Illuminate\Http\Response
-     */
+        if (\Auth::check()) {
+             $user = \Auth::user();
+              $tasks = $user->tasks()->orderBy('id')->paginate(10);
+            
+            
         return view('tasks.index', [
             'tasks' => $tasks,
         ]);
+        }else {
+            return view('welcome');
+        }
 
     }
     /**

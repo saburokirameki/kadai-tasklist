@@ -17,7 +17,7 @@
 // });
  Route::get('/', 'TaskController@index');
 
-Route::resource('tasks', 'TaskController');
+
 
 
 // user registration
@@ -32,7 +32,8 @@ Route::get('logout', 'Auth\LoginController@logout')->name('logout.get');
 
 Route::group(['middleware' => 'auth'], function () {
    
-    Route::resource('tasks', 'TaskController', ['only' => ['store', 'destroy']]);
+    Route::resource('tasks', 'TaskController');
 });
 
 
+// , ['only' => ['store', 'destroy','show']]
